@@ -1,2 +1,3 @@
 # dungeonestDarkInBrowser
-SoftUni Arrays Exercise 
+
+SoftUni Arrays Exercise
