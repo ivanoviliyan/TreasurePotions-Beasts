@@ -12,6 +12,7 @@ newGameBtn.style.display = 'none';
 
 const generateValue = document.querySelector('#generate-value-btn');
 
+
 takeUserNameBtn.addEventListener('click', () => {
 	if (userName.value === '') {
 		alertPrompt.style.display = 'block';
@@ -46,22 +47,33 @@ function pickRandomElement(arr) {
 }
 
 let defaultHealth = 100;
+// Promqna
+let coins= 0;
+// Promqna
 
 let randomEvent;
 const items = ['potion', 'chest', 'monster'];
 potionChestMonsterBtn.addEventListener('click', () => {
-	let newRandomEvent = Math.floor(Math.random() * 3);
+	// adding if check for .value="";
+	if (userName.value === '') {
+		console.log(`Enter you username before playing the game!`);
+	} else{
+		let newRandomEvent = Math.floor(Math.random() * 3);
 	randomEvent = newRandomEvent;
 	switch (newRandomEvent) {
 		case 0:
-			console.log(items[0]); //potion
+			//console.log(items[0]); //potion
+			console.log(`Great, it's a ${items[0]}!`);
 			break;
 		case 1:
-			console.log(items[1]); //chest
+			//console.log(items[1]); //chest
+			console.log(`Congrats, you won a ${items[1]}!`);
 			break;
 		case 2:
-			console.log(items[2]); //monster
+			//console.log(items[2]); //monster
+			console.log(`Unfortunately, it's a ${items[2]}!`);
 			break;
+	}
 	}
 });
 let currentHealth = defaultHealth;
@@ -86,9 +98,15 @@ generateValue.addEventListener('click', () => {
 		case 1: //chest
 			let coinsInChest = Math.floor(Math.random() * 11);
 			if (coinsInChest === 0) {
-				console.log(`This chest is empty ${coinsInChest}`);
+				//Tvoq red|console.log(`This chest is empty ${coinsInChest}`);
+				console.log(`You generated: ${coinsInChest} coins!`);
+				coins += coinsInChest;
+				console.log(`Total coins are: ${coins} coins!`);
 			} else {
-				console.log(coinsInChest);
+				doubleOrNothing(coinsInChest);
+				console.log(`You generated: ${coinsInChest} coins!`);
+				coins += coinsInChest;
+				console.log(`Total coins are: ${coins} coins!`);
 			}
 			break;
 		case 2: // monster
@@ -102,17 +120,40 @@ generateValue.addEventListener('click', () => {
 				);
 
 				currentHealth -= monsterDmg;
-				if (currentHealth > 0) {
-					console.log(currentHealth);
+				if (currentHealth > 0) { //This
+					console.log(`Your current health is ${currentHealth}!`);
 				}
 			}
 			break;
 	}
-	if (currentHealth <= 0) {
-		console.log(`${userName.value} you lost the game! Your health is 0!`);
+	if (currentHealth <= 0) { //This
+		console.log(`${userName.value}, you lost the game! Your health is 0!`);
 		generateValue.style.display = 'none';
+		potionChestMonsterBtn.style.display = 'none';
 		newGameBtn.style.display = 'flex';
+		// Promqna
+		newGameBtn.style.display = 'flex';
+		// Promqna
 	}
 });
 
+
 //function thats picks one random element in array
+
+//NewGameBtn functionality
+newGameBtn.addEventListener('click', () => {
+	console.log("The game will restart after 3 seconds!");
+	setTimeout(() => {
+		location.reload();
+	}, 3000);
+})
+//Double or nothing
+function doubleOrNothing(){
+	let dblOrNthng = Math.floor(Math.random()*2); // Or >= 0.5
+	if (dblOrNthng === 0) {
+  		return bet * 2;
+	} else {
+  		return 0;
+	}
+}
+//console.log(doubleOrNothing(100));
