@@ -86,7 +86,6 @@ function outputPotionChestMonsterValues() {
 				// coins += coinsInChest;
 				// console.log(`Total coins are: ${coins} coins!`);
 			} else {
-				//doubleOrNothing(coinsInChest);
 				console.log(`You found: ${coinsInChest} coins!`);
 				updateGameLog(`You found: ${coinsInChest} coins!`);
 				chestCounter++;
@@ -129,7 +128,7 @@ let randomEvent;
 const items = ['potion', 'chest', 'monster'];
 const monsters = [
 	'Dracula 🧛‍♂️',
-	"Frankenstein's Monster 🧟‍♂️",
+	'Frankenstein 🧟‍♂️',
 	'Werewolf 🐺',
 	'Mummy 💀',
 	'Zombie 🧟‍♀️',
@@ -153,7 +152,7 @@ takeUserNameBtn.addEventListener('click', () => {
 		userNameLabel.style.display = 'none';
 		userName.style.display = 'none';
 		takeUserNameBtn.style.display = 'none';
-		welcomeMsg.textContent = `Work done ${userName.value}! Adventure time!`;
+		welcomeMsg.innerHTML = `Work done ${userName.value}! Adventure time!`;
 		potionChestMonsterBtn.disabled = false;
 		generateValue.disabled = true;
 	}
@@ -177,17 +176,27 @@ generateValue.addEventListener('click', () => {
 	outputPotionChestMonsterValues();
 	if (currentHealth <= 0) {
 		console.log(`${userName.value}, you lost the game! Your health is 0!`);
-		welcomeMsg.textContent = `${userName.value}, you lost the game! Your health is 0!`;
+		welcomeMsg.innerHTML = `${userName.value}, you died! Your health is 0! <br>`;
 		generateValue.style.display = 'none';
 		potionChestMonsterBtn.style.display = 'none';
 		newGameBtn.style.display = 'flex';
 		newGameBtn.style.display = 'flex';
 		updateElementText('player-health', 0);
+		if (totalCoins >= 25) {
+			welcomeMsg.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for 25 coins?<br>`;
+			const buttonYes = document.createElement('button');
+			buttonYes.textContent = 'YES';
+			const buttonNo = document.createElement('button');
+			buttonNo.textContent = 'NO';
+			const parentElement = document.querySelector('#welcome-msg');
+			parentElement.appendChild(buttonYes);
+			parentElement.appendChild(buttonNo);
+		}
 	}
 });
 newGameBtn.addEventListener('click', () => {
 	console.log('The game will restart after 3 seconds!');
-	welcomeMsg.textContent = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
+	welcomeMsg.innerHTML = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
 	setTimeout(() => {
 		location.reload();
 	}, 3000);
