@@ -15,8 +15,31 @@ newGameBtn.style.display = 'none';
 const generateValue = document.querySelector('#generate-value-btn');
 potionChestMonsterBtn.disabled = true;
 generateValue.disabled = true;
-let score = document.querySelector('#score');
+const score = document.querySelector('#score');
 score.style.display = 'none';
+
+let newNum = 0;
+let defaultHealth = 100;
+let currentHealth = defaultHealth;
+let totalCoins = 0;
+let chestCounter = 0;
+let killsCounter = 0;
+let scorePoints = 0;
+let randomEvent;
+const items = ['potion', 'chest', 'monster'];
+const monsters = [
+	'Dracula 🧛‍♂️',
+	'Frankenstein 🧟‍♂️',
+	'Werewolf 🐺',
+	'Mummy 💀',
+	'Zombie 🧟‍♀️',
+	'Gargoyle 🗿',
+	'Skeleton 💀',
+	'Vampire 🧛‍♂️',
+	'Ghost 👻',
+	'Yeti 🐻',
+];
+
 function updateElementText(elementId, textValue) {
 	const element = document.querySelector(`#${elementId}`);
 	element.textContent = `${textValue}`;
@@ -36,16 +59,18 @@ function buttonYesLogic() {
 	gameLog.innerHTML = '';
 
 	welcomeMsg.textContent = `${userName.value} you used extra life!`;
-	totalCoins -= 25;
+	if (totalCoins >= 25) {
+		totalCoins -= 25;
+	}
 	updateElementText('player-total-coins', totalCoins);
 	newGameBtn.style.display = 'none';
 	generateValue.style.display = 'inline';
 	potionChestMonsterBtn.style.display = 'inline';
 	currentHealth = 100;
 	updateElementText('player-health', currentHealth);
+	updateElementText('player-total-coins', totalCoins);
 }
 
-let newNum = 0;
 function outputPotionChestMonster() {
 	let newRandomEvent = Math.floor(Math.random() * 3);
 	newNum = newRandomEvent;
@@ -128,28 +153,13 @@ function outputPotionChestMonsterValues() {
 			}
 			break;
 	}
+	const items = gameLog.getElementsByTagName('li');
+	if (items.length > 15) {
+		while (gameLog.firstChild) {
+			gameLog.removeChild(gameLog.firstChild);
+		}
+	}
 }
-
-let defaultHealth = 100;
-let currentHealth = defaultHealth;
-let totalCoins = 0;
-let chestCounter = 0;
-let killsCounter = 0;
-let scorePoints = 0;
-let randomEvent;
-const items = ['potion', 'chest', 'monster'];
-const monsters = [
-	'Dracula 🧛‍♂️',
-	'Frankenstein 🧟‍♂️',
-	'Werewolf 🐺',
-	'Mummy 💀',
-	'Zombie 🧟‍♀️',
-	'Gargoyle 🗿',
-	'Skeleton 💀',
-	'Vampire 🧛‍♂️',
-	'Ghost 👻',
-	'Yeti 🐻',
-];
 
 takeUserNameBtn.addEventListener('click', () => {
 	if (userName.value === '') {
@@ -222,6 +232,7 @@ generateValue.addEventListener('click', () => {
 				if (event.code === 'KeyY') {
 					buttonYes.click();
 					buttonYes.style.display = 'none';
+					buttonYes.disabled = true;
 				}
 			});
 			const buttonNo = document.createElement('button');
@@ -230,11 +241,13 @@ generateValue.addEventListener('click', () => {
 			document.addEventListener('keydown', (event) => {
 				if (event.code === 'KeyN') {
 					buttonNo.click();
+					buttonNo.disabled = true;
 				}
 			});
 			const parentElement = document.querySelector('#welcome-msg');
 			parentElement.appendChild(buttonYes);
 			parentElement.appendChild(buttonNo);
+			updateElementText('player-total-coins', totalCoins);
 		}
 	}
 });
