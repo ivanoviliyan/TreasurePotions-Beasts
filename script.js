@@ -15,7 +15,8 @@ newGameBtn.style.display = 'none';
 const generateValue = document.querySelector('#generate-value-btn');
 potionChestMonsterBtn.disabled = true;
 generateValue.disabled = true;
-
+let score = document.querySelector('#score');
+score.style.display = 'none';
 function updateElementText(elementId, textValue) {
 	const element = document.querySelector(`#${elementId}`);
 	element.textContent = `${textValue}`;
@@ -29,6 +30,21 @@ function updateGameLog(text) {
 function pickRandomElement(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
+
+function buttonYesLogic() {
+	potionChestMonsterBtn.disabled = false;
+	gameLog.innerHTML = '';
+
+	welcomeMsg.textContent = `${userName.value} you used extra life!`;
+	totalCoins -= 25;
+	updateElementText('player-total-coins', totalCoins);
+	newGameBtn.style.display = 'none';
+	generateValue.style.display = 'inline';
+	potionChestMonsterBtn.style.display = 'inline';
+	currentHealth = 100;
+	updateElementText('player-health', currentHealth);
+}
+
 let newNum = 0;
 function outputPotionChestMonster() {
 	let newRandomEvent = Math.floor(Math.random() * 3);
@@ -81,19 +97,12 @@ function outputPotionChestMonsterValues() {
 				console.log(`You found: ${coinsInChest} coins!`);
 				updateGameLog(`The chest is empty!`);
 				updateElementText('player-chests', chestCounter);
-
-				//Да се генерира от бутон
-				// coins += coinsInChest;
-				// console.log(`Total coins are: ${coins} coins!`);
 			} else {
 				console.log(`You found: ${coinsInChest} coins!`);
 				updateGameLog(`You found: ${coinsInChest} coins!`);
 				chestCounter++;
 				updateElementText('player-chests', chestCounter);
 				updateElementText('player-total-coins', totalCoins);
-				//Да се генерира от бутон
-				// coins += coinsInChest;
-				// console.log(`Total coins are: ${coins} coins!`);
 			}
 			break;
 		case 2: // monster
@@ -109,6 +118,8 @@ function outputPotionChestMonsterValues() {
 				updateGameLog(`${randomMonster} take you ${monsterDmg} damage!`);
 				currentHealth -= monsterDmg;
 				killsCounter++;
+				scorePoints += Math.floor(Math.random() * 5 + 1);
+				updateElementText('score-span', scorePoints);
 				updateElementText('player-monster-kills', killsCounter);
 				if (currentHealth > 0) {
 					console.log(`Your current health is ${currentHealth}!`);
@@ -124,6 +135,7 @@ let currentHealth = defaultHealth;
 let totalCoins = 0;
 let chestCounter = 0;
 let killsCounter = 0;
+let scorePoints = 0;
 let randomEvent;
 const items = ['potion', 'chest', 'monster'];
 const monsters = [
@@ -152,6 +164,7 @@ takeUserNameBtn.addEventListener('click', () => {
 		userNameLabel.style.display = 'none';
 		userName.style.display = 'none';
 		takeUserNameBtn.style.display = 'none';
+		score.style.display = 'block';
 		welcomeMsg.innerHTML = `Work done ${userName.value}! Adventure time!`;
 		potionChestMonsterBtn.disabled = false;
 		generateValue.disabled = true;
@@ -204,21 +217,21 @@ generateValue.addEventListener('click', () => {
 			welcomeMsg.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for 25 coins?<br>`;
 			const buttonYes = document.createElement('button');
 			buttonYes.textContent = 'YES';
-			buttonYes.addEventListener('click', () => {
-				gameLog.innerHTML = '';
-				buttonYes.style.display = 'none';
-				welcomeMsg.textContent = `${userName.value} you used extra life!`;
-				totalCoins -= 25;
-				updateElementText('player-total-coins', totalCoins);
-				newGameBtn.style.display = 'none';
-				generateValue.style.display = 'block';
-				potionChestMonsterBtn.style.display = 'block';
-				currentHealth = 100;
-				updateElementText('player-health', currentHealth);
+			buttonYes.addEventListener('click', buttonYesLogic);
+			document.addEventListener('keydown', (event) => {
+				if (event.code === 'KeyY') {
+					buttonYes.click();
+					buttonYes.style.display = 'none';
+				}
 			});
 			const buttonNo = document.createElement('button');
 			buttonNo.textContent = 'NO';
 			buttonNo.addEventListener('click', resetGame);
+			document.addEventListener('keydown', (event) => {
+				if (event.code === 'KeyN') {
+					buttonNo.click();
+				}
+			});
 			const parentElement = document.querySelector('#welcome-msg');
 			parentElement.appendChild(buttonYes);
 			parentElement.appendChild(buttonNo);
