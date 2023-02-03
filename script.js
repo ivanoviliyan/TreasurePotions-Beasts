@@ -157,6 +157,21 @@ takeUserNameBtn.addEventListener('click', () => {
 		generateValue.disabled = true;
 	}
 });
+
+document.addEventListener('keydown', (event) => {
+	if (event.code === 'ArrowUp') {
+		potionChestMonsterBtn.click();
+	} else if (event.code === 'ArrowDown') {
+		generateValue.click();
+	} else if (event.code === 'Enter') {
+		if (newGameBtn.style.display !== 'none') {
+			newGameBtn.click();
+		} else {
+			takeUserNameBtn.click();
+		}
+	}
+});
+
 potionChestMonsterBtn.addEventListener('click', () => {
 	if (potionChestMonsterBtn.disabled === false) {
 		potionChestMonsterBtn.disabled = true;
@@ -166,6 +181,7 @@ potionChestMonsterBtn.addEventListener('click', () => {
 	generateValue.disabled = false;
 	outputPotionChestMonster();
 });
+
 generateValue.addEventListener('click', () => {
 	if (generateValue.disabled === true) {
 		generateValue.disabled === false;
@@ -182,22 +198,40 @@ generateValue.addEventListener('click', () => {
 		newGameBtn.style.display = 'flex';
 		newGameBtn.style.display = 'flex';
 		updateElementText('player-health', 0);
+		generateValue.disabled = true;
+		potionChestMonsterBtn.disabled = true;
 		if (totalCoins >= 25) {
 			welcomeMsg.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for 25 coins?<br>`;
 			const buttonYes = document.createElement('button');
 			buttonYes.textContent = 'YES';
+			buttonYes.addEventListener('click', () => {
+				gameLog.innerHTML = '';
+				buttonYes.style.display = 'none';
+				welcomeMsg.textContent = `${userName.value} you used extra life!`;
+				totalCoins -= 25;
+				updateElementText('player-total-coins', totalCoins);
+				newGameBtn.style.display = 'none';
+				generateValue.style.display = 'block';
+				potionChestMonsterBtn.style.display = 'block';
+				currentHealth = 100;
+				updateElementText('player-health', currentHealth);
+			});
 			const buttonNo = document.createElement('button');
 			buttonNo.textContent = 'NO';
+			buttonNo.addEventListener('click', resetGame);
 			const parentElement = document.querySelector('#welcome-msg');
 			parentElement.appendChild(buttonYes);
 			parentElement.appendChild(buttonNo);
 		}
 	}
 });
-newGameBtn.addEventListener('click', () => {
+
+resetGame = () => {
 	console.log('The game will restart after 3 seconds!');
 	welcomeMsg.innerHTML = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
 	setTimeout(() => {
 		location.reload();
 	}, 3000);
-});
+};
+
+newGameBtn.addEventListener('click', resetGame);
