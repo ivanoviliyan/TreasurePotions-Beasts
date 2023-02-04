@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeons Dark</title>
-</head>
-<body>
-    <nav class="gameControll">
-        <ul>
-            <li>About</li>
-            <li>GitHub Repository</li>
-        </ul>
-    </nav>
-    <section class="gameContainer">
-        <aside class="left-side">
-            <label id="user-name-label" for="user-name">Enter username:</label>
-            <input type="text" id="user-name" name="user-name">
-            <button id="take-user-name-btn">Submit</button>
-            <p id="alert-prompt"></p>
-            <br /><button id="potion-chest-monster-btn">Make your turn</button>
-            <br /><button id="generate-value-btn">Generate value</button>
-            <br /><button id="new-game-btn">New game</button>
-        </aside>
-        <aside class="right-side">
-            <p id="welcome-msg"></p>
-            <p id="score">Score: <span id="score-span">0</span></p>
-            <p id="player-stats">
-                Health: <span id="player-health">100</span>
-                Chest found: <span id="player-chests">0</span>
-                Coins found: <span id="player-total-coins">0</span>
-                Monster kills: <span id="player-monster-kills">0</span>
-            </p>
-            <ul id="game-log"></ul>
-        </aside>
-    </section>
-    <footer class="footer">
-    </footer>
-    <script src="script.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dungeons Dark</title>
+	</head>
+	<body>
+		<nav class="gameControll">
+			<ul>
+				<li>About</li>
+				<li>GitHub Repository</li>
+			</ul>
+		</nav>
+		<section class="gameContainer">
+			<aside class="left-side">
+				<label id="user-name-label" for="user-name">Enter username:</label>
+				<input type="text" id="user-name" name="user-name" />
+				<button id="take-user-name-btn">Submit</button>
+				<p id="alert-prompt"></p>
+				<br /><button id="potion-chest-monster-btn">Make your turn</button>
+				<br /><button id="generate-value-btn">Generate value</button>
+				<br /><button id="new-game-btn">New game</button>
+			</aside>
+			<aside class="right-side">
+				<p id="welcome-msg"></p>
+				<p id="score">Score: <span id="score-span">0</span></p>
+				<p id="player-stats">
+					Health: <span id="player-health">100</span> Chest found:
+					<span id="player-chests">0</span> Coins found:
+					<span id="player-total-coins">0</span> Monster kills:
+					<span id="player-monster-kills">0</span>
+				</p>
+				<ul id="game-log"></ul>
+			</aside>
+		</section>
+		<footer class="footer"></footer>
+		<script type="module" src="script.js"></script>
+	</body>
 </html>
