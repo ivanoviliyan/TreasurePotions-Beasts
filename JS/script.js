@@ -6,12 +6,12 @@ const gameLog = document.querySelector('#game-log');
 const welcomeMsg = document.querySelector('#welcome-msg');
 const playerStats = document.querySelector('#player-stats');
 playerStats.style.display = 'none';
-const userNameLabel = document.querySelector('#user-name-label');
+//const userNameLabel = document.querySelector('#user-name-label');
 const potionChestMonsterBtn = document.querySelector(
 	'#potion-chest-monster-btn'
 );
 const alertPrompt = document.querySelector('#alert-prompt');
-alertPrompt.style.display = 'none';
+//alertPrompt.style.display = 'none';
 const newGameBtn = document.querySelector('#new-game-btn');
 newGameBtn.style.display = 'none';
 const generateValue = document.querySelector('#generate-value-btn');
@@ -53,12 +53,13 @@ takeUserNameBtn.addEventListener('click', () => {
 			alertPrompt.textContent = '';
 		}, 2000);
 	} else {
+		alertPrompt.textContent = `Work done ${userName.value}! Adventure time!`;
 		playerStats.style.display = 'block';
 		score.style.display = 'block';
-		userNameLabel.style.display = 'none';
+		//userNameLabel.style.display = 'none';
 		userName.style.display = 'none';
 		takeUserNameBtn.style.display = 'none';
-		welcomeMsg.innerHTML = `Work done ${userName.value}! Adventure time!`;
+		//welcomeMsg.innerHTML = `Work done ${userName.value}! Adventure time!`;
 		potionChestMonsterBtn.disabled = false;
 		generateValue.disabled = true;
 	}
@@ -100,7 +101,8 @@ generateValue.addEventListener('click', () => {
 	if (currentHealth <= 0) {
 		newGameBtn.disabled = false;
 		console.log(`${userName.value}, you lost the game! Your health is 0!`);
-		welcomeMsg.innerHTML = `${userName.value}, you died! Your health is 0! <br>`;
+		//welcomeMsg.innerHTML
+		alertPrompt.textContent = `${userName.value}, you died! Your health is 0!`;
 		generateValue.style.display = 'none';
 		potionChestMonsterBtn.style.display = 'none';
 		newGameBtn.style.display = 'inline';
