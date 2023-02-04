@@ -1,0 +1,22 @@
+{
+  "name": "dungeonestdarkinbrowser",
+  "version": "1.0.0",
+  "description": "SoftUni Arrays Exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oldbasic/dungeonestDarkInBrowser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oldbasic/dungeonestDarkInBrowser/issues"
+  },
+  "homepage": "https://github.com/oldbasic/dungeonestDarkInBrowser#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}

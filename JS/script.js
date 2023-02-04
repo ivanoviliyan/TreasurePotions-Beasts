@@ -2,6 +2,7 @@ import * as functionsModule from './functions.js';
 
 const userName = document.querySelector('#user-name');
 const takeUserNameBtn = document.querySelector('#take-user-name-btn');
+const gameLog = document.querySelector('#game-log');
 const welcomeMsg = document.querySelector('#welcome-msg');
 const playerStats = document.querySelector('#player-stats');
 playerStats.style.display = 'none';
@@ -97,6 +98,7 @@ generateValue.addEventListener('click', () => {
 	outputPotionChestMonsterValues();
 
 	if (currentHealth <= 0) {
+		newGameBtn.disabled = false;
 		console.log(`${userName.value}, you lost the game! Your health is 0!`);
 		welcomeMsg.innerHTML = `${userName.value}, you died! Your health is 0! <br>`;
 		generateValue.style.display = 'none';
@@ -106,12 +108,20 @@ generateValue.addEventListener('click', () => {
 		functionsModule.updateElementText('player-health', 0);
 		generateValue.disabled = true;
 		potionChestMonsterBtn.disabled = true;
-		functionsModule.updateElementText('player-total-coins', totalCoins);
 		if (totalCoins >= lifeCost) {
+			newGameBtn.disabled = true;
+			takeUserNameBtn.disabled = true;
+			newGameBtn.style.display = 'none';
 			counter++;
 			welcomeMsg.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for ${lifeCost} coins?<br>`;
+			if (counter > 5) {
+				welcomeMsg.innerHTML +=
+					'Every time after your fifth dead your life cost 10 more coins to revive you!<br>';
+			}
 			const buttonYes = document.createElement('button');
 			buttonYes.textContent = 'YES';
+			buttonYes.className =
+				'bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded';
 			buttonYes.addEventListener('click', buttonYesLogic);
 			document.addEventListener('keydown', (event) => {
 				if (event.code === 'KeyY') {
@@ -123,6 +133,8 @@ generateValue.addEventListener('click', () => {
 			});
 			const buttonNo = document.createElement('button');
 			buttonNo.textContent = 'NO';
+			buttonNo.className =
+				'bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded';
 			buttonNo.addEventListener('click', resetGame);
 			document.addEventListener('keydown', (event) => {
 				if (event.code === 'KeyN') {
@@ -240,12 +252,13 @@ function outputPotionChestMonsterValues() {
 	}
 }
 function buttonYesLogic() {
+	functionsModule.updateElementText('player-total-coins', totalCoins);
 	potionChestMonsterBtn.disabled = false;
 	gameLog.innerHTML = '';
 	if (totalCoins >= lifeCost) {
 		totalCoins -= lifeCost;
 		if (counter > 5) {
-			lifeCost *= 2;
+			lifeCost += 10;
 		}
 		welcomeMsg.textContent = `${userName.value} you used extra life!`;
 		functionsModule.updateElementText('player-total-coins', totalCoins);

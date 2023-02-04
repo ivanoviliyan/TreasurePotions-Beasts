@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Dungeons Dark</title>
+		<link rel="stylesheet" href="./dist/output.css">
 	</head>
 	<body>
 		<nav class="gameControll">
@@ -15,13 +16,19 @@
 		</nav>
 		<section class="gameContainer">
 			<aside class="left-side">
-				<label id="user-name-label" for="user-name">Enter username:</label>
-				<input type="text" id="user-name" name="user-name" />
-				<button id="take-user-name-btn">Submit</button>
+				
+				<label class="block text-gray-700 text-sm font-bold mb-2" for="user-name" id="user-name-label">
+					Username:
+				</label>
+				<input
+					class="shadow appearance-none border rounded w-150px py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="user-name" type="text" placeholder="Username">
+				
+				<button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="take-user-name-btn">Submit</button>
 				<p id="alert-prompt"></p>
-				<br /><button id="potion-chest-monster-btn">Make your turn</button>
-				<br /><button id="generate-value-btn">Generate value</button>
-				<br /><button id="new-game-btn">New game</button>
+				<br /><button class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded" id="potion-chest-monster-btn">Make your turn</button>
+				<br /><button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded" id="generate-value-btn">Generate value</button>
+				<br /><button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="new-game-btn">New game</button>
 			</aside>
 			<aside class="right-side">
 				<p id="welcome-msg"></p>
@@ -36,6 +43,6 @@
 			</aside>
 		</section>
 		<footer class="footer"></footer>
-		<script type="module" src="script.js"></script>
+		<script type="module" src="JS/script.js"></script>
 	</body>
 </html>
