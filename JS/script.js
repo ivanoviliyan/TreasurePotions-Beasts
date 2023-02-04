@@ -3,7 +3,7 @@ import * as functionsModule from './functions.js';
 const userName = document.querySelector('#user-name');
 const takeUserNameBtn = document.querySelector('#take-user-name-btn');
 const gameLog = document.querySelector('#game-log');
-const welcomeMsg = document.querySelector('#welcome-msg');
+// const welcomeMsg = document.querySelector('#welcome-msg');
 const playerStats = document.querySelector('#player-stats');
 playerStats.style.display = 'none';
 //const userNameLabel = document.querySelector('#user-name-label');
@@ -101,7 +101,6 @@ generateValue.addEventListener('click', () => {
 	if (currentHealth <= 0) {
 		newGameBtn.disabled = false;
 		console.log(`${userName.value}, you lost the game! Your health is 0!`);
-		//welcomeMsg.innerHTML
 		alertPrompt.textContent = `${userName.value}, you died! Your health is 0!`;
 		generateValue.style.display = 'none';
 		potionChestMonsterBtn.style.display = 'none';
@@ -115,24 +114,11 @@ generateValue.addEventListener('click', () => {
 			takeUserNameBtn.disabled = true;
 			newGameBtn.style.display = 'none';
 			counter++;
-			welcomeMsg.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for ${lifeCost} coins?<br>`;
+			alertPrompt.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for ${lifeCost} coins?<br>`;
 			if (counter > 5) {
-				welcomeMsg.innerHTML +=
+				alertPrompt.innerHTML +=
 					'Every time after your fifth dead your life cost 10 more coins to revive you!<br>';
 			}
-			const buttonYes = document.createElement('button');
-			buttonYes.textContent = 'YES';
-			buttonYes.className =
-				'bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded';
-			buttonYes.addEventListener('click', buttonYesLogic);
-			document.addEventListener('keydown', (event) => {
-				if (event.code === 'KeyY') {
-					buttonYes.click();
-					buttonYes.style.display = 'none';
-					buttonYes.disabled = true;
-					buttonNo.disabled = true;
-				}
-			});
 			const buttonNo = document.createElement('button');
 			buttonNo.textContent = 'NO';
 			buttonNo.className =
@@ -140,13 +126,34 @@ generateValue.addEventListener('click', () => {
 			buttonNo.addEventListener('click', resetGame);
 			document.addEventListener('keydown', (event) => {
 				if (event.code === 'KeyN') {
+					const alertPromptDiv = document.querySelector('#alert-prompt-div');
 					buttonNo.click();
 					buttonNo.disabled = true;
+					alertPromptDiv.removeChild(buttonNo);
+					alertPromptDiv.removeChild(buttonYes);
 				}
 			});
-			const parentElement = document.querySelector('#welcome-msg');
+			const buttonYes = document.createElement('button');
+			buttonYes.textContent = 'YES';
+			buttonYes.className =
+				'bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded';
+			buttonYes.addEventListener('click', buttonYesLogic);
+			document.addEventListener('keydown', (event) => {
+				if (event.code === 'KeyY') {
+					const alertPromptDiv = document.querySelector('#alert-prompt-div');
+					buttonYes.click();
+					buttonYes.style.display = 'none';
+					buttonYes.disabled = true;
+					alertPromptDiv.removeChild(buttonNo);
+				}
+			});
+
+			const parentElement = document.querySelector('#alert-prompt-div');
+			// const parentElement1 = document.querySelector('#welcome-msg');
 			parentElement.appendChild(buttonYes);
 			parentElement.appendChild(buttonNo);
+			// parentElement1.appendChild(buttonYes);
+			// parentElement1.appendChild(buttonNo);
 			functionsModule.updateElementText('player-total-coins', totalCoins);
 		}
 	}
@@ -154,7 +161,8 @@ generateValue.addEventListener('click', () => {
 
 function resetGame() {
 	console.log('The game will restart after 3 seconds!');
-	welcomeMsg.innerHTML = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
+	alertPrompt.innerHTML = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
+	// welcomeMsg.innerHTML = `Hey, ${userName.value}. The game will restart after 3 seconds!`;
 	setTimeout(() => {
 		location.reload();
 	}, 3000);
@@ -254,7 +262,8 @@ function outputPotionChestMonsterValues() {
 	}
 }
 function buttonYesLogic() {
-	functionsModule.updateElementText('player-total-coins', totalCoins);
+	// functionsModule.updateElementText('player-total-coins', totalCoins);
+
 	potionChestMonsterBtn.disabled = false;
 	gameLog.innerHTML = '';
 	if (totalCoins >= lifeCost) {
@@ -262,7 +271,8 @@ function buttonYesLogic() {
 		if (counter > 5) {
 			lifeCost += 10;
 		}
-		welcomeMsg.textContent = `${userName.value} you used extra life!`;
+
+		alertPrompt.textContent = `${userName.value} you used extra life!`;
 		functionsModule.updateElementText('player-total-coins', totalCoins);
 		newGameBtn.style.display = 'none';
 		generateValue.style.display = 'inline';
