@@ -154,7 +154,7 @@ function outputPotionChestMonsterValues() {
 			break;
 	}
 	const items = gameLog.getElementsByTagName('li');
-	if (items.length > 15) {
+	if (items.length >= 11) {
 		while (gameLog.firstChild) {
 			gameLog.removeChild(gameLog.firstChild);
 		}
@@ -233,6 +233,7 @@ generateValue.addEventListener('click', () => {
 					buttonYes.click();
 					buttonYes.style.display = 'none';
 					buttonYes.disabled = true;
+					buttonNo.disabled = true;
 				}
 			});
 			const buttonNo = document.createElement('button');
