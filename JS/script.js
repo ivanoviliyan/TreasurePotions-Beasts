@@ -43,6 +43,10 @@ const monsters = [
 	'Ghost 👻',
 	'Yeti 🐻',
 ];
+let buttonPressCounter = 0;
+
+const alertPromptContainer = document.querySelector('#alert-prompt-container');
+const submitContainer = document.querySelector('#submitContainer');
 
 takeUserNameBtn.addEventListener('click', () => {
 	if (userName.value === '') {
@@ -62,6 +66,7 @@ takeUserNameBtn.addEventListener('click', () => {
 		//welcomeMsg.innerHTML = `Work done ${userName.value}! Adventure time!`;
 		potionChestMonsterBtn.disabled = false;
 		generateValue.disabled = true;
+		//submitContainer.remove();
 	}
 });
 
@@ -87,9 +92,16 @@ potionChestMonsterBtn.addEventListener('click', () => {
 	}
 	generateValue.disabled = false;
 	outputPotionChestMonster();
+	buttonPressCounter++;
 });
 
 generateValue.addEventListener('click', () => {
+	if (buttonPressCounter > 4) {
+		buttonPressCounter = 0;
+		while (gameLog.firstChild) {
+			gameLog.removeChild(gameLog.firstChild);
+		}
+	}
 	if (generateValue.disabled === true) {
 		generateValue.disabled === false;
 	} else {
@@ -115,7 +127,7 @@ generateValue.addEventListener('click', () => {
 			newGameBtn.style.display = 'none';
 			counter++;
 			alertPrompt.innerHTML += `You have ${totalCoins} coins. Do you want a extra live for ${lifeCost} coins?<br>`;
-			if (counter > 5) {
+			if (counter >= 5) {
 				alertPrompt.innerHTML +=
 					'Every time after your fifth dead your life cost 10 more coins to revive you!<br>';
 			}
@@ -254,13 +266,8 @@ function outputPotionChestMonsterValues() {
 			}
 			break;
 	}
-	const items = gameLog.getElementsByTagName('li');
-	if (items.length >= 11) {
-		while (gameLog.firstChild) {
-			gameLog.removeChild(gameLog.firstChild);
-		}
-	}
 }
+
 function buttonYesLogic() {
 	potionChestMonsterBtn.disabled = false;
 	gameLog.innerHTML = '';

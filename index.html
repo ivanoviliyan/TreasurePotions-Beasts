@@ -10,17 +10,12 @@
 		<link rel="stylesheet" href="./dist/output.css">
 		<script src="https://cdn.tailwindcss.com"></script>
 		
-		
 	</head>
-	<body>
+	<body class="font-mono">
 		<nav class="fixed top-0 left-0 bg-white w-full shadow">
-			<div class="container m-auto flex justify-between items-center text-gray-700">
-				<img src="images/logo.png" style="margin-left: 10px" width="100px" height="100px" alt="your-image">
-				<h1 class="pl-8 py-4 text-xl font-bold*">Treasure, Potions & Beasts
-					
-					
-				</h1>
-				
+			<div class="container m-auto flex justify-around items-center text-gray-700">
+				<img src="images/logo.png" width="100px" height="100px" alt="your-image">
+				<h1 class="font-press-start pl-8 py-4 text-xl font-bold">Treasure, Potions & Beasts</h1>
 				<link rel="icon" type="image/x-icon" href="/images/logo.ico">
 				<ul class="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
 					<li class="hover:bg-gray-200 py-4 px-6">About</li>
@@ -42,7 +37,7 @@
 		</nav>
 		
 		<section class="mt-28 w-full flex-col justify-center">
-			<div class="w-full gap-4 flex justify-center bg-gray-200 p-4">
+			<div id="submitContainer" class="w-full gap-4 flex justify-center bg-gray-200 p-4">
 				<!--
 				<label class="block text-gray-700 text-sm font-bold mb-2" for="user-name" id="user-name-label">
                     Username:
@@ -57,18 +52,18 @@
 				<button class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded" id="potion-chest-monster-btn">Make your turn</button>
 				<button class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded" id="generate-value-btn">Generate value</button>
 			</div>
-			<div class="w-full gap-4 flex-col justify-around bg-purple-200 p-4">
-				<p class="justify-center flex" id="alert-prompt"></p>
+			<div id="alert-prompt-container" class="w-full gap-4 flex-col justify-around bg-purple-200 p-4">
+				<p class="justify-center flex text-center font-extrabold text-cyan-800 pt-3" id="alert-prompt"></p>
 				<div class="justify-center gap-5 flex pt-3" id="alert-prompt-div"></div>
 			</div>
 			<div class="w-full align-around justify-around text-center flex bg-orange-200 p-4">
 				<p id="welcome-msg"></p>
-				<p id="score">Score: <span id="score-span">0</span></p>
-				<p id="player-stats">
-					Health: <span id="player-health">100</span> Chest found:
-					<span id="player-chests">0</span> Coins found:
-					<span id="player-total-coins">0</span> Monster kills:
-					<span id="player-monster-kills">0</span>
+				<p id="score" class="font-bold text-purple-900">Score: <span id="score-span" class="text-purple-600">0</span></p>
+				<p id="player-stats" >
+					<span class="font-bold">Health:</span><span id="player-health" class="text-green-600 font-bold">100</span>
+					<span class="font-bold">Chest found:</span><span id="player-chests" class="text-amber-600 font-bold">0
+					</span> <span class="font-bold">Coins found:</span><span id="player-total-coins" class="text-yellow-500 font-bold">0</span>
+					<span class="font-bold">Monster kills:</span><span id="player-monster-kills" class="text-red-600 font-bold">0</span>
 				</p>
 				
 			</div>

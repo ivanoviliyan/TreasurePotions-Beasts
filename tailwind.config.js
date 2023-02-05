@@ -5,7 +5,7 @@ module.exports = {
 		extend: {
 			display: ['group-focus'],
 			opacity: ['group-focus'],
-			inset: ['group-focus']
+			inset: ['group-focus'],
 		},
 	},
 	plugins: [],
