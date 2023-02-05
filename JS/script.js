@@ -262,8 +262,6 @@ function outputPotionChestMonsterValues() {
 	}
 }
 function buttonYesLogic() {
-	// functionsModule.updateElementText('player-total-coins', totalCoins);
-
 	potionChestMonsterBtn.disabled = false;
 	gameLog.innerHTML = '';
 	if (totalCoins >= lifeCost) {
