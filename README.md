@@ -1,6 +1,4 @@
-# dungeonestDarkInBrowser
-
-Treasure, Potions & Beasts
+# TreasurePotionsBeasts
 
 The game was created by Iliyan Ivanov and Kris Zeynev.
 
