@@ -164,6 +164,7 @@ generateValue.addEventListener('click', () => {
       buttonNo.className =
         'bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded';
       buttonNo.addEventListener('click', () => {
+        gameLogUI.className = 'hidden';
         playerStatsContainer.style.display = 'none';
         gameLogContainer.style.display = 'none';
         console.log('The game will restart after 3 seconds!');
@@ -219,19 +220,9 @@ generateValue.addEventListener('click', () => {
         }
       });
       document.addEventListener('keydown', (event) => {
-        //here
-        // const alertPromptDiv = document.querySelector('#alert-prompt-div');
-        // buttonYes.click();
-        // buttonYes.style.display = 'none';
-        // buttonYes.disabled = true;
-        // alertPromptDiv.removeChild(buttonNo);
-
         if (event.code === 'KeyY') {
-          const alertPromptDiv = document.querySelector('#alert-prompt-div');
+          //const alertPromptDiv = document.querySelector('#alert-prompt-div');
           buttonYes.click();
-          // buttonYes.style.display = 'none';
-          // buttonYes.disabled = true;
-          // alertPromptDiv.removeChild(buttonNo);
         }
       });
 
@@ -247,6 +238,7 @@ generateValue.addEventListener('click', () => {
 });
 
 function resetGame() {
+  gameLogUI.className = 'hidden';
   playerStatsContainer.style.display = 'none';
   gameLogContainer.style.display = 'none';
   newGameContainer.style.display = 'none';
