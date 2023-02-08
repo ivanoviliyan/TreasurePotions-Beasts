@@ -5,7 +5,7 @@ const submitBtn = document.querySelector('#take-user-name-btn');
 const gameLog = document.querySelector('#game-log');
 // const welcomeMsg = document.querySelector('#welcome-msg');
 const playerStats = document.querySelector('#player-stats');
-playerStats.style.display = 'none';
+playerStats.className = 'hidden';
 //const userNameLabel = document.querySelector('#user-name-label');
 const potionChestMonsterBtn = document.querySelector(
 	'#potion-chest-monster-btn'
@@ -68,7 +68,7 @@ submitBtn.addEventListener('click', () => {
 		}, 2000);
 	} else {
 		alertPrompt.textContent = `Work done ${userName.value}! Adventure time!`;
-		playerStats.style.display = 'flex';
+		playerStats.className = 'flex flex-col gap-2 sm:flex-row sm:gap-6';
 		score.style.display = 'flex';
 		userName.style.display = 'none';
 		submitBtn.style.display = 'none';
@@ -341,3 +341,10 @@ function outputPotionChestMonsterValues() {
 	}
 }
 newGameBtn.addEventListener('click', resetGame);
+
+const redirectBtn = document.querySelector('#redirect-btn');
+redirectBtn.addEventListener('click', function () {
+	setTimeout(() => {
+		window.open('https://github.com/oldbasic/TreasurePotions-Beasts', '_blank');
+	}, 1000);
+});

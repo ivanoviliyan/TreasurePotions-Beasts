@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./index.html'],
 	theme: {
 		extend: {
-			display: ['group-focus'],
-			opacity: ['group-focus'],
-			inset: ['group-focus'],
+			colors: {
+				'custom-color': {
+					100: '#F34068',
+					200: '#006B7F',
+					300: '#6FA9B7',
+					// ...
+				},
+			},
 		},
 	},
+	variants: {},
 	plugins: [],
 };
