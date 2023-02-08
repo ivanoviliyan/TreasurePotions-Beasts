@@ -17,4 +17,4 @@ Below the "Game log:" actually see the result of clicking the two buttons. First
 
 If you lose the game, but you collect 25 coins it will ask you to continue the game. If this scenario repeat 5 times the coins to revive will change by 10 more.
 
-If you lose the game, but you not collect 25 coins it will appear a "New game button", which restart the game after 3 seconds.
+If you lose the game, but you not collect 25 coins it will appear a "New game" button, which restart the game after 3 seconds.
