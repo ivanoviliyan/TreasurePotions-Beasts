@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dungeons Dark</title>
+    <title>Treasure, Potions & Beasts</title>
     <link rel="stylesheet" href="./css/tailwind.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="./dist/output.css" />
@@ -93,16 +93,20 @@
           </div>
           <div><span class="font-bold">Coins found:</span><span id="player-total-coins"
               class="text-yellow-500 font-bold">0</span></div>
-          <div><span class="font-bold">Monster kills:</span><span id="player-monster-kills"
+          <div><span class="font-bold">Beasts kills:</span><span id="player-monster-kills"
               class="text-red-600 font-bold">0</span></div>
       
         </div>
       </div>
 
+      <div id="game-log-ui">
+        Game log:
+      </div>
+
       </div>
       <div
         id="game-log-container"
-        class="rounded w-full text-center gap-4 flex justify-center bg-amber-100 p-4"
+        class="rounded w-full text-center gap-4 flex justify-center text-amber-800 bg-amber-100 p-4"
       >
         <ul id="game-log"></ul>
       </div>
