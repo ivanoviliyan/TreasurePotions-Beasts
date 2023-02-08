@@ -2,6 +2,8 @@
 
 The game was created by Iliyan Ivanov and Kris Zeynev.
 
+You can play the game here: [Treasure, Potions & Beasts](https://TreasurePotions-Beasts.kriszeynev1.repl.co).
+
 Firstly, to start playing the game you must first enter your name and click the "Submit" button.
 If you click the "Submit" button before you have entered your name, you will receive a message "Enter you username before playing the game!".
 
