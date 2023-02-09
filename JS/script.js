@@ -152,7 +152,7 @@ generateValue.addEventListener('click', () => {
       newGameContainer.style.display = 'none';
       if (counter >= 5) {
         alertPrompt.innerHTML +=
-          'Every time after your fifth ☠️ your life cost +10🪙 for extra ❤️!<br>';
+          'Every time after your fifth ☠️ your life cost +10💸 for extra ❤️!<br>';
       }
       const buttonNo = document.createElement('button');
       buttonNo.textContent = 'NO';
