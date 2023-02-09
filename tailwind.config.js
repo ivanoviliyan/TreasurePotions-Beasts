@@ -3,12 +3,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				'custom-color': {
+				color: {
 					100: '#F34068',
 					200: '#006B7F',
 					300: '#6FA9B7',
-					// ...
 				},
+				// Configure your color palette here
 			},
 		},
 	},

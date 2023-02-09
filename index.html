@@ -10,42 +10,40 @@
     <link rel="stylesheet" href="./dist/output.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="font-mono">
-    <div class="flex justify-evenly items-center bg-teal-100 w-10/12 m-auto">
-      <img
+  <body class="font-mono bg-slate-800 pt-1">
+    <div class="flex justify-evenly items-center bg-slate-200 w-10/12 sm:w-6/12 m-auto rounded-t ">
+      <img class="w-4/12 sm:w-2/12"
         src="images/logo.png"
-        width="100px"
-        height="100px"
         alt="your-image"
       />
 	
-      <ul class="flex gap-7">
+      <ul class="flex gap-7 text-2xl sm:text-4xl">
         <li>
-          <button id="redirect-btn" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">About</button>
+          <button id="redirect-btn" class="  bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 border-b-4 border-slate-700 hover:border-slate-800 rounded">🔎About</button>
         </li>
       </ul>
     </div>
     <section
-      id="main-section" class="w-10/12 gap-1 m-auto flex flex-col items-center justify-center"
+      id="main-section" class="w-10/12 sm:w-6/12 gap-1 m-auto flex flex-col items-center justify-center"
     >
-      <div class="flex items-center justify-center text-center  bg-teal-100 w-full pb-3 rounded-b">
-        <h1 class="text-4xl ">
+      <div class="flex items-center justify-center text-center  bg-slate-200 w-full pb-3 rounded-b">
+        <h1 class="text-3xl sm:text-5xl py-0 sm:py-2">
           <span class="font-bold text-yellow-600">Treasure</span>,
           <span class="font-bold text-green-700">Potions</span> &
           <span class="font-bold text-red-800">Beasts</span>
         </h1>
 		
       </div>
-	<div id="score" class="text-3xl w-full flex items-center rounded justify-center py-3 font-bold text-purple-900 bg-teal-200">
-		Score: <span id="score-span" class="text-purple-600 ">0</span>
+	<div id="score" class="text-3xl sm:text-4xl w-full flex items-center rounded justify-center py-3 font-bold text-white bg-slate-500">
+    🎯Score: <span id="score-span">0</span>
 	</div>
-      <div id="submitContainer" class="w-full rounded gap-4 bg-amber-100 p-4 text-center flex justify-center">
+      <div id="submitContainer" class="text-xl sm:text-3xl w-full rounded gap-4 bg-slate-400 p-4 text-center flex justify-center ">
         <input
-          class="text-center flex shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline md:w-150px"
+          class="text-sm sm:text-3xl text-center  flex appearance-none border rounded w-1/2 py-2 px-3 bg-slate-100 text-slate-800 leading-tight focus:outline-none focus:shadow-outline md:w-150px"
           id="user-name" type="text" placeholder="Enter your name" />
       
         <button
-          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 border-b-4 border-slate-700 hover:border-slate-900 rounded"
           id="take-user-name-btn">
           Submit
         </button>
@@ -53,74 +51,71 @@
 
       <div
         id="main-buttons-container"
-        class="bg-teal-300 w-full rounded gap-8 flex justify-center p-4"
+        class="bg-slate-300 w-full rounded flex gap-4 justify-evenly py-2 sm:py-3 text-lg sm:text-3xl px-2"
       >
         <button
-          class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+          class=" bg-red-500 hover:bg-red-800 text-white font-bold py-0 sm:py-8 px-2 sm:px-4 border-b-4 border-red-700 hover:border-red-900 rounded"
           id="potion-chest-monster-btn"
         >
-          Make your turn
+        ⬆Make your turn⬆
         </button>
         <button
-          class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
+          class="bg-green-500 hover:bg-green-800 text-white font-bold py-0 sm:py-8 px-2 sm:px-4  border-b-4 border-green-700 hover:border-green-900 rounded"
           id="generate-value-btn"
         >
-          Generate value
+        ⬇Generate value⬇
+        </button>
+      </div>
+      <div id="new-game-container" class="rounded w-full gap-4 flex justify-center bg-slate-300 p-3">
+        <button
+          class="text-xl sm:text-3xl bg-slate-500 hover:bg-slate-700 text-white font-bold py-3 px-4 border-b-4 border-slate-700 hover:border-slate-800 rounded"
+          id="new-game-btn">
+          🎮New game
         </button>
       </div>
       <div
         id="alert-prompt-container"
-        class="w-full rounded gap-4 flex-col justify-around bg-red-300 py-3"
+        class="w-full rounded gap-4 flex-col justify-around bg-slate-500 py-2"
       >
         <p
-          class="justify-center flex text-center font-extrabold text-white  pt-3 text-xl"
+          class="justify-center flex text-center font-extrabold text-white pt-4 text-xl sm:text-3xl px-3"
           id="alert-prompt"
         ></p>
         <div
-          class="rounded justify-center gap-5 flex "
+          class="rounded justify-evenly flex"
           id="alert-prompt-div"
         ></div>
       </div>
 
 
       <div id="player-stats-container"
-        class="rounded w-full align-around justify-around text-center flex md:flex-row bg-teal-300 p-4 md:p-8">
+        class="text-xl sm:text-2xl rounded w-full align-around justify-evenly text-center flex md:flex-row bg-slate-300 py-1 md:p-3">
       
         <div id="player-stats" class="flex items-center justify-around w-full text-lg md:text-xl  ">
-          <div><span class="font-bold">Health:</span><span id="player-health" class="text-green-600 font-bold ">100</span>
+          <div><span class="font-bold">❤️Health:</span><span id="player-health" class="text-green-600 font-bold ">100</span>
           </div>
-          <div><span class="font-bold">Chest found:</span><span id="player-chests" class="text-amber-600 font-bold">0</span>
+          <div><span class="font-bold">💼Chest found:</span><span id="player-chests" class="text-amber-600 font-bold">0</span>
           </div>
-          <div><span class="font-bold">Coins found:</span><span id="player-total-coins"
+          <div><span class="font-bold">🪙Coins found:</span><span id="player-total-coins"
               class="text-yellow-500 font-bold">0</span></div>
-          <div><span class="font-bold">Beasts kills:</span><span id="player-monster-kills"
+          <div><span class="font-bold">👾Beasts kills:</span><span id="player-monster-kills"
               class="text-red-600 font-bold">0</span></div>
       
         </div>
       </div>
 
       <div id="game-log-ui">
-        Game log:
+        🧾Game log:
       </div>
 
       </div>
       <div
         id="game-log-container"
-        class="rounded w-full text-center gap-4 flex justify-center text-amber-800 bg-amber-100 p-4"
+        class="rounded w-full text-center gap-4 flex justify-center text-black text-lg sm:text-2xl bg-slate-400 py-1"
       >
         <ul id="game-log"></ul>
       </div>
-      <div
-        id="new-game-container"
-        class="rounded w-full gap-4 flex justify-center bg-red-200 p-4"
-      >
-        <button
-          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          id="new-game-btn"
-        >
-          New game
-        </button>
-      </div>
+      
     </section>
 
     <footer></footer>
