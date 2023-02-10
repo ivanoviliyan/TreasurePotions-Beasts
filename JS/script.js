@@ -104,7 +104,7 @@ document.addEventListener('keydown', (event) => {
 
 potionChestMonsterBtn.addEventListener('click', () => {
 	gameLogUI.className =
-		'shadow-2xl bg-slate-500 text-2xl md:text-3xl lg:text-4xl w-full flex items-center rounded justify-center py-2 font-bold text-white';
+		'shadow-2xl bg-slate-500 text-xl md:text-3xl lg:text-4xl w-full flex items-center rounded justify-center py-2 font-bold text-white';
 	if (potionChestMonsterBtn.disabled === false) {
 		potionChestMonsterBtn.disabled = true;
 	} else {
